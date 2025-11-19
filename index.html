@@ -1,0 +1,379 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Zespół V - FizJo</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" />
+  <style>
+
+    body {
+        
+        scroll-behavior: smooth;
+        background-color: #0d1117;
+        color: #c9d1d9;
+    }
+
+    header {
+        justify-content: center;
+        height: 80vh;
+        background: url('./grafika/inz1.png') center/cover no-repeat;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        color: white;
+        text-shadow: 0 0 10px rgba(0,0,0,0.7);
+    }
+
+    header h1 {
+        font-size: 4rem;
+        font-weight: bold;
+        text-align: center;
+        padding: 0 5vw;
+    }
+
+    section {
+        scroll-margin-top: 90px;
+        padding: 6vh 2rem;
+    }
+
+    h2 {
+        color: #58a6ff;
+        border-left: 6px solid #1f6feb;
+        padding-left:12px;
+        margin-bottom: 2rem;
+    }
+
+    #info, #harmonogram {
+        background-color: #161b22;
+        border-radius:12px;
+        padding: 6vh 5vw;
+        margin-bottom: 4vh;
+        margin-top: 4vh;
+    }
+
+    #projekt, #prace, #dokumentacja {
+        border-radius: 12px;
+        padding: 6vh;
+        align-items: center;
+    }
+
+    .list-group-item {
+        background-color: #0e1621 !important;
+        color: #c9d1d9 !important;
+        margin-bottom: 0.5rem;
+        padding: 1rem;
+        border-radius: 8px;
+        border: 1px solid #1f2937;
+    }
+
+    ul li {
+        padding: 0.5rem 0;
+        font-size: 1.1rem;
+    }
+
+    @media (max-width: 768px){
+        section{
+            padding: 5vh 4vw;
+        }
+
+        .list-group-item {
+            padding: 0.8rem;
+        }
+    }
+
+    .team-card {
+      background-color: #0e1621;
+      border: 1px solid #1f2137;
+      border-radius: 12px;
+      padding: 2rem 1rem;
+      text-align: center;
+      transition: transform .3s ease, box-shadow .3s ease, border-color .3s ease;
+      height: 100%;
+    }
+
+     /*.team-card:hover {
+      transform: translateY(-8px);
+      border-color: #58a6ff;
+      box-shadow: 0 6px 20px rgba(88, 166, 255, 0.25);
+    }*/
+
+    .team-icon {
+      font-size: 3rem;
+      margin-bottom: 1rem;
+    }
+
+    .team-card h4 {
+      margin: 0;
+      font-size: 1.3rem;
+      color: #58a6ff;
+    }
+
+    .team-card p {
+      margin-top: .5rem;
+      color: #c9d1d9;
+    }
+
+    .rainbow-border {
+    border: 2px solid #1f2137;
+    border-radius: 12px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease, border-image-source 0.3s ease;
+      }
+
+
+    @keyframes rainbowBorder {
+      0% { border-image-source: linear-gradient(45deg, red, orange, yellow, green, blue, indigo, violet); }
+      50% { border-image-source: linear-gradient(45deg, violet, red, orange, yellow, green, blue); }
+      100% { border-image-source: linear-gradient(45deg, red, orange, yellow, green, blue, indigo, violet); }
+    }
+
+
+    .rainbow-border:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 6px 20px rgba(255, 0, 255, 0.25);
+      border-width: 2px;
+      border-image-slice: 1;
+      border-style: solid;
+      animation: rainbowBorder 3s linear infinite;
+    }
+
+    .top-menu {
+      background: #0d1117;
+      border-bottom: 2px solid #1f6feb;
+      position: sticky;
+      top: 0;
+      z-index: 9999;
+    }
+
+    .top-menu .nav-link {
+      color: #c9d1d9 !important;
+      font-size: 1.25rem;
+      font-weight: 500;
+      letter-spacing: 0.5px;
+    }
+
+    .top-menu .nav-link:hover {
+      color: #58a6ff !important;
+    }
+
+    .top-menu .dropdown-menu {
+      background-color: #161b22;
+      border: 1px solid #1f2937;
+    }
+
+    .top-menu .dropdown-item {
+      color: #c9d1d9;
+    }
+
+    .top-menu .dropdown-item:hover {
+      background-color: #1f6feb;
+      color: white;
+    }
+
+    .navbar-nav .nav-item {
+      margin: 0 1rem !important;
+    }
+
+    .meeting-list {
+      line-height: 1.6;
+      padding-left: 0;
+    }
+
+    .meeting-item {
+      margin-bottom: 1.5rem;
+      padding: 1rem;
+      border-left: 4px solid #1f6feb;
+      border-radius: 0.25rem;
+      animation: fadeInUp 0.8s ease forwards;
+      opacity: 0;
+    }
+
+    .meeting-item:nth-child(1) { animation-delay: 0.1s; }
+    .meeting-item:nth-child(2) { animation-delay: 0.2s; }
+
+    .date {
+      font-weight: bold;
+      color: #1f6feb;
+      display: block;
+      margin-bottom: 0.5rem;
+    }
+
+    @keyframes fadeInUp {
+      0% {
+        transform: translateY(20px);
+        opacity: 0;
+      }
+      100% {
+        transform: translateY(0);
+        opacity: 1;
+      }
+    }
+
+    @media (max-width: 576px) {
+      .meeting-item {
+        font-size: 0.95rem;
+        padding: 0.75rem;
+      }
+
+      .date {
+        font-size: 1rem;
+      }
+    }
+
+
+
+</style>
+</head>
+<body>
+
+  <nav class="navbar navbar-expand-lg navbar-dark top-menu">
+  <div class="container">
+
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainMenu">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse justify-content-center" id="mainMenu">
+      <ul class="navbar-nav align-items-center">
+
+        <li class="nav-item">
+          <a class="nav-link" href="#projekt">INFORMACJE</a>
+        </li>
+
+        <li class="nav-item">
+          <a class="nav-link" href="#info">O NAS</a>
+        </li>
+
+        <li class="nav-item">
+          <a class="nav-link" href="#prace">HARMONOGRAM PRAC</a>
+        </li>
+
+        <li class="nav-item">
+          <a class="nav-link" href="#harmonogram">HARMONOGRAM SPOTKAŃ</a>
+        </li>
+
+        <li class="nav-item">
+          <a class="nav-link" href="#dokumentacja">DOKUMENTACJA</a>
+        </li>
+
+      </ul>
+    </div>
+
+  </div>
+</nav>
+
+
+
+  <header>
+    <h1 class="text-center" >Nasi inżynierowie dokonują wszelkich starań aby strona została ukończona jak najszybciej.</h1>
+  </header>
+
+  <section id="projekt" class="container">
+      <h2 class="mb-4">Informacje o projekcie</h2>
+    <p><h4>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam at orci ipsum. Proin ultricies nulla leo, vitae aliquam risus interdum in. Ut nec ante nunc. Donec id ipsum nunc. Pellentesque lobortis tempor nulla vitae bibendum. Suspendisse potenti. Phasellus placerat rhoncus dui id commodo. Nam vitae augue sed eros dictum molestie. Sed consequat laoreet fermentum. Quisque molestie nunc nulla, eget dignissim eros consequat at. Vestibulum in nibh lacus. Maecenas luctus lacinia pretium. </h4></p>
+    
+  </section>
+
+  <section id="info" class="container">
+    <h2 class="mb-4">Członkowie zespołu</h2>
+
+    <div class="row g-4">
+      <div class="col-12 col-sm-6 col-lg-4">
+        <div class="team-card rainbow-border">
+          <div class="team-icon">
+            👨‍💼
+          </div>
+
+          <h4>Tobiasz Pokorniecki</h4>
+          <p>Opiekun zespołu</p>
+        </div>
+      </div>
+
+      <div class="col-12 col-sm-6 col-lg-4">
+        <div class="team-card rainbow-border">
+          <div class="team-icon">
+            🌟
+          </div>
+
+          <h4>Mateusz Ratkowski</h4>
+          <p>Kierownik zespołu, algorytmista</p>
+        </div>
+      </div>
+
+      <div class="col-12 col-sm-6 col-lg-4">
+        <div class="team-card rainbow-border">
+          <div class="team-icon">
+            💻
+          </div>
+
+          <h4>Piotr Kłosowski</h4>
+          <p>Sekretarz, mobile developer </p>
+        </div>
+      </div>
+
+      <div class="col-12 col-sm-6 col-lg-4">
+        <div class="team-card rainbow-border">
+          <div class="team-icon">
+            📱
+          </div>
+
+          <h4>Kacper Pawlicki</h4>
+          <p>Mobile developer</p>
+        </div>
+      </div>
+
+      <div class="col-12 col-sm-6 col-lg-4">
+        <div class="team-card rainbow-border">
+          <div class="team-icon">
+            🛠️
+          </div>
+
+          <h4>Paweł Witkowski</h4>
+          <p>Backend developer</p>
+        </div>
+      </div>
+
+      <div class="col-12 col-sm-6 col-lg-4">
+        <div class="team-card rainbow-border">
+          <div class="team-icon">
+            🛠️
+          </div>
+
+          <h4>Marcin Adamczyk</h4>
+          <p>Backend developer</p>
+        </div>
+      </div>
+
+    </div>
+
+  </section>
+
+  <section id="prace" class="container">
+      <h2 class="mb-4">Przebieg prac</h2>
+      <p>Opis etapów realizacji projektu oraz aktualnych postępów.</p>
+  </section>
+
+  <section id="harmonogram" class="container py-5">
+    <h2 class="mb-4">Harmonogram spotkań</h2>
+    <ul class="list-unstyled meeting-list">
+      <li class="meeting-item">
+        <span class="date">11.11.2025</span>
+        Spotkanie zapoznawcze z opiekunem zespołu. Omówienie umiejętności oraz doświadczeń związanych z IT. Przedstawienie propozycji projektowych.
+      </li>
+
+      <li class="meeting-item">
+        <span class="date">14.11.2025</span>
+        Przedstawienie opinii na temat propozycji projektowych. Wybór ostatecznego tematu projektu. Podział zespołu na role oraz wstępne rozmowy nad technologiami. 
+      </li>
+    </ul>
+  </section>
+
+  <section id="dokumentacja" class="container">
+      <h2 class="mb-4">Dokumentacja</h2>
+      <p>Linki i pliki związane z dokumentacją projektu.</p>
+  </section>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
+
