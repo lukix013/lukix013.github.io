@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Zespół V - FizJo</title>
+  <title>Zespół V - Fisio</title>
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" />
   <style>
 
@@ -15,14 +15,27 @@
     }
 
     header {
+        position: relative;
         justify-content: center;
-        height: 80vh;
-        background: url('inz1.png') center/cover no-repeat;
+        height: 75vh;
         display: flex;
         justify-content: center;
         align-items: center;
         color: white;
         text-shadow: 0 0 10px rgba(0,0,0,0.7);
+        overflow: hidden;
+    }
+
+    header .bg {
+      content: '';
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      top: 0;
+      left: 0;
+      background: url('grafika.jpg') center/no-repeat;
+      filter: blur(4px);
+      z-index: -1;
     }
 
     header h1 {
@@ -220,6 +233,41 @@
       }
     }
 
+    .bullet-list {
+      list-style: none;
+      padding-left: 1rem;
+      margin-top: 6px;
+    }
+
+    .bullet-list li {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin: 6px 0;
+    }
+
+    .bullet-list li::before {
+      content: "";
+      width: 8px;
+      height: 8px;
+      background-color: #007bff; 
+      border-radius: 50%;
+      flex-shrink: 0;
+      box-shadow: 0 0 6px rgba(31, 111, 235, 0.7);
+    }
+
+    .month {
+      background-color: #161b22;
+        border-radius:12px;
+      margin-bottom: 1.5rem;
+      padding: 1rem;
+      padding-left: 2rem;
+      border-radius: 0.25rem;
+      animation: fadeInUp 0.8s ease forwards;
+      opacity: 0;
+    }
+
+
 
 
 </style>
@@ -265,17 +313,25 @@
 
 
   <header>
-    <h1 class="text-center" >Nasi inżynierowie dokonują wszelkich starań aby strona została ukończona jak najszybciej.</h1>
+    <img class="bg" src="grafika.jpg" alt="Tło">
+    <h1 class="text-center" >Fisio - Twoja droga do szybszego odzyskania sprawności</h1>
   </header>
 
+
   <section id="projekt" class="container">
-      <h2 class="mb-4">Informacje o projekcie</h2>
-    <p><h4>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam at orci ipsum. Proin ultricies nulla leo, vitae aliquam risus interdum in. Ut nec ante nunc. Donec id ipsum nunc. Pellentesque lobortis tempor nulla vitae bibendum. Suspendisse potenti. Phasellus placerat rhoncus dui id commodo. Nam vitae augue sed eros dictum molestie. Sed consequat laoreet fermentum. Quisque molestie nunc nulla, eget dignissim eros consequat at. Vestibulum in nibh lacus. Maecenas luctus lacinia pretium. </h4></p>
+      <h2 class="mb-4"> 📘 Informacje o projekcie</h2>
+    <p><h4>Naszym celem jest stworzenie aplikacji, która zachęca pacjentów fizjoterapii do regularnego wykonywania ćwiczeń w domu.
+      Głównym założeniem jest dostarczanie pacjentowi informacji zwrotnej, dzięki której może sprawdzić, czy ćwiczenia są wykonywane prawidłowo.
+    </h4></p>
+
+    <p><h4>W założeniu aplikacja wykorzystuję analizę nagrań wideo do oceny poprawności wykonywanych ruchów. Dodatkowo pacjent może śledzić swoje swoje postępy w czasie oraz otrzymywać motywacyjne przypomnienia.
+      Dzięki temu rehabilitacja staje się bezpieczniejsza, bardziej skuteczna i angażująca. Aplikacja Fisio ma na celu nie tylko wsparcie pacjentów, ale również fizjoterapeutów, umożliwiając łatwiejszą kontrolę postępów i lepszą personalizację ćwiczeń.
+    </h4></p>
     
   </section>
 
   <section id="info" class="container">
-    <h2 class="mb-4">Członkowie zespołu</h2>
+    <h2 class="mb-4"> 👥 Członkowie zespołu</h2>
 
     <div class="row g-4">
       <div class="col-12 col-sm-6 col-lg-4">
@@ -307,7 +363,7 @@
           </div>
 
           <h4>Piotr Kłosowski</h4>
-          <p>Sekretarz, mobile developer </p>
+          <p>Sekretarz, designer, mobile developer </p>
         </div>
       </div>
 
@@ -349,12 +405,70 @@
   </section>
 
   <section id="prace" class="container">
-      <h2 class="mb-4">Przebieg prac</h2>
-      <p>Opis etapów realizacji projektu oraz aktualnych postępów.</p>
+      <h2 class="mb-4"> 🗓️ Harmonogram prac prac</h2>
+      <ul class="list-unstyled meeting-list">
+      <li class="month">
+        <span class="date">Grudzień</span>
+        <ul class="bullet-list">
+          <li>Wdrożenie kompletnego systemu autoryzacji (logowanie Google, email, zbieranie danych, role pacjent/ekspert)</li>
+          <li>Przeprowadzenie ankiety wśród pacjentów fizjoterapii</li>
+        </ul>
+      </li>
+
+      <li class="month">
+        <span class="date">Styczeń</span>
+        <ul class="bullet-list">
+          <li>Dodanie możliwości wyświetlania listy ćwiczeń oraz utworzenia pojedynczych ćwiczeń</li>
+          <li>Implementacja modułu wykonywania ćwiczeń i oceny ich poprawności</li>
+          <li>Zakończenie prac nad historią ćwiczeń oraz analizą wyników</li>
+          <li> Organizacja spotkania kontrolnego z fizjoterapeutami</li>
+        </ul>
+      
+      </li>
+
+      <li class="month">
+        <span class="date">Luty</span>
+        <ul class="bullet-list">
+          <li>Umożliwienie tworzenia planów treningowych w panelu eksperta</li>
+          <li>Finalizacja panelu eksperta</li>
+          <li>Ukończenie modułu ankietowego w aplikacji</li>
+          <li>Wprowadzenie obsługi NFC i kodów QR do parowania użytkowników</li>
+        </ul>
+      </li>
+
+      <li class="month">
+        <span class="date">Marzec</span>
+        <ul class="bullet-list">
+          <li>Dodanie czatu umożliwiająceho kontakt pacjenta z ekspertem</li>
+          <li>Wprowadzenie systemu powiadomień push oraz mailowych</li>
+          <li>Przeprowadzenie testów end-to-end</li>
+          <li>Wprowadzenie rozbudowanego panelu administratora</li>
+          <li>Organizacja spotkania kontrolnego z fizjoterapeutami</li>
+        </ul>        
+      </li>
+
+      <li class="month">
+        <span class="date">Kwiecień</span>
+        <ul class="bullet-list">
+          <li>Implementacja modułu notatek i tagowania pacjentów</li>
+          <li>Przygotowanie prezentacji</li>
+          <li>Sporządzenie dokumentacji</li>
+        </ul>        
+      </li>
+
+      <li class="month">
+        <span class="date">Maj</span>
+        <ul class="bullet-list">
+          <li>Wprowadzenie ostatecznych poprawek i dopracowanie szczegółów</li>
+          <li>Prezentacja projektu</li>
+        </ul>        
+      </li>
+
   </section>
 
   <section id="harmonogram" class="container py-5">
-    <h2 class="mb-4">Harmonogram spotkań</h2>
+
+    <h2 class="mb-4"> 🗓️ Harmonogram spotkań</h2>
     <ul class="list-unstyled meeting-list">
       <li class="meeting-item">
         <span class="date">11.11.2025</span>
@@ -365,11 +479,26 @@
         <span class="date">14.11.2025</span>
         Przedstawienie opinii na temat propozycji projektowych. Wybór ostatecznego tematu projektu. Podział zespołu na role oraz wstępne rozmowy nad technologiami. 
       </li>
+
+      <li class="meeting-item">
+        <span class="date">21.11.2025</span>
+        Prezentacja poczynionych postępów, przydział nowych zadań dotyczących testowania technologii oraz rozwoju projektu.
+      </li>
+
+      <li class="meeting-item">
+        <span class="date">28.11.2025</span>
+        Rozmowa ze specjalistami fizjoterapii. Omówienie najważniejszych zagadnień/problemów związanych z wykonywaniem ćwiczeń przez pacjentów.
+      </li>
+
+      <li class="meeting-item">
+        <span class="date">05.12.2025</span>
+        Ustalenie ostatecznego harmonogramu prac.
+      </li>
     </ul>
   </section>
 
   <section id="dokumentacja" class="container">
-      <h2 class="mb-4">Dokumentacja</h2>
+      <h2 class="mb-4"> 📚 Dokumentacja</h2>
       <p>Linki i pliki związane z dokumentacją projektu.</p>
   </section>
 
